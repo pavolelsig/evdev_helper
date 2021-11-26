@@ -2,6 +2,7 @@
 
 #Sources: https://libvirt.org/kbase/qemu-passthrough-security.html
 #	  https://passthroughpo.st/using-evdev-passthrough-seamless-vm-input/
+#	  https://forum.level1techs.com/t/trying-to-setup-evdev-input-passthrough/139157/5
 
 
 METHOD="by-id"
@@ -27,6 +28,12 @@ fi
 
 #Create a backup copy of /etc/libvirt/qemu.conf
 if ! [ -a .backup.qemu.conf ]; then
+
+#Ensuring that apparmor does not block it
+	if [ -a /etc/apparmor.d/abstractions/libvirt-qemu ]; then
+		echo "/dev/input/* rw," >> /etc/apparmor.d/abstractions/libvirt-qemu
+	fi
+	
 	cp /etc/libvirt/qemu.conf .backup.qemu.conf
 fi
 
