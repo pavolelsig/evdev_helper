@@ -27,3 +27,4 @@ _______________________________________________________________
 * https://python-evdev.readthedocs.io/en/latest/
 * https://libvirt.org/kbase/qemu-passthrough-security.html
 * https://passthroughpo.st/using-evdev-passthrough-seamless-vm-input/
+* https://forum.level1techs.com/t/trying-to-setup-evdev-input-passthrough/139157/5
