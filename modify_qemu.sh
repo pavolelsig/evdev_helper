@@ -67,6 +67,10 @@ echo 'group = "root"' >> .temp.qemu.conf
 echo "" >> .temp.qemu.conf
 echo "clear_emulator_capabilities = 0" >> .temp.qemu.conf
 
+OLD_PERMISSIONS="#security_default_confined = 1"
+NEW_PERMISSIONS="security_default_confined = 0"
+
+sed -i -e "s|${OLD_PERMISSIONS}|${NEW_PERMISSIONS}|" .temp.qemu.conf
 
 cp .temp.qemu.conf /etc/libvirt/qemu.conf
 rm .temp.qemu.conf
